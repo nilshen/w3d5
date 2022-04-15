@@ -39,7 +39,7 @@ class PolyTreeNode
   end
 
   def dfs(target)
-
+    return nil if self.nil?ls
   end
 
   def bfs(target)

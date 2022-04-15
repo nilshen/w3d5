@@ -39,7 +39,12 @@ class PolyTreeNode
   end
 
   def dfs(target)
-    return nil if self.nil?ls
+    return self if self.value == target
+    self.children.each do |child|
+      searchres = child.dfs(target)
+      return searchres unless searchres == nil
+    end
+    nil
   end
 
   def bfs(target)
@@ -49,16 +54,14 @@ class PolyTreeNode
     # puts "---------------------------"
     # puts "#{target} on line 49"
     until queue.empty?
-      return queue.shift if queue.shift.value == target
-      queue.shift.children.each do |child|
+      el = queue.shift
+      return el if el.value == target
+      el.children.each do |child|
         queue << child
       end
-      # puts "#{index} on line 53"
     end
     nil
   end
-
-
 end
 
 # class Searchable
